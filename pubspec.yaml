@@ -1,0 +1,27 @@
+name: health_count
+description: A new Flutter project.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.1.2 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  freezed_annotation:
+  json_annotation:
+  sqflite:
+  font_awesome_flutter:
+  get:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner:
+  freezed:
+  json_serializable:
+
+flutter:
+  uses-material-design: true
