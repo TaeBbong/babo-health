@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'views/view_main.dart';
+
+import 'bindings/initial_bindings.dart';
 
 void main() {
   runApp(const MainApp());
+  InitialBindings().dependencies();
 }
 
 class MainApp extends StatelessWidget {
@@ -9,12 +14,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return GetMaterialApp(
+      title: 'Modern Tab App with GetX',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: MainView(),
     );
   }
 }
