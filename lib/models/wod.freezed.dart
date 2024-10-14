@@ -20,14 +20,19 @@ Wod _$WodFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Wod {
+  int? get id => throw _privateConstructorUsedError;
   int get date => throw _privateConstructorUsedError;
   String get work => throw _privateConstructorUsedError;
-  int get set => throw _privateConstructorUsedError;
+  int get setCount => throw _privateConstructorUsedError;
   int get rep => throw _privateConstructorUsedError;
   double get weight => throw _privateConstructorUsedError;
 
+  /// Serializes this Wod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Wod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WodCopyWith<Wod> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -36,7 +41,8 @@ abstract class $WodCopyWith<$Res> {
   factory $WodCopyWith(Wod value, $Res Function(Wod) then) =
       _$WodCopyWithImpl<$Res, Wod>;
   @useResult
-  $Res call({int date, String work, int set, int rep, double weight});
+  $Res call(
+      {int? id, int date, String work, int setCount, int rep, double weight});
 }
 
 /// @nodoc
@@ -48,16 +54,23 @@ class _$WodCopyWithImpl<$Res, $Val extends Wod> implements $WodCopyWith<$Res> {
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Wod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? date = null,
     Object? work = null,
-    Object? set = null,
+    Object? setCount = null,
     Object? rep = null,
     Object? weight = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -66,9 +79,9 @@ class _$WodCopyWithImpl<$Res, $Val extends Wod> implements $WodCopyWith<$Res> {
           ? _value.work
           : work // ignore: cast_nullable_to_non_nullable
               as String,
-      set: null == set
-          ? _value.set
-          : set // ignore: cast_nullable_to_non_nullable
+      setCount: null == setCount
+          ? _value.setCount
+          : setCount // ignore: cast_nullable_to_non_nullable
               as int,
       rep: null == rep
           ? _value.rep
@@ -88,7 +101,8 @@ abstract class _$$WodImplCopyWith<$Res> implements $WodCopyWith<$Res> {
       __$$WodImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int date, String work, int set, int rep, double weight});
+  $Res call(
+      {int? id, int date, String work, int setCount, int rep, double weight});
 }
 
 /// @nodoc
@@ -97,16 +111,23 @@ class __$$WodImplCopyWithImpl<$Res> extends _$WodCopyWithImpl<$Res, _$WodImpl>
   __$$WodImplCopyWithImpl(_$WodImpl _value, $Res Function(_$WodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Wod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? date = null,
     Object? work = null,
-    Object? set = null,
+    Object? setCount = null,
     Object? rep = null,
     Object? weight = null,
   }) {
     return _then(_$WodImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -115,9 +136,9 @@ class __$$WodImplCopyWithImpl<$Res> extends _$WodCopyWithImpl<$Res, _$WodImpl>
           ? _value.work
           : work // ignore: cast_nullable_to_non_nullable
               as String,
-      set: null == set
-          ? _value.set
-          : set // ignore: cast_nullable_to_non_nullable
+      setCount: null == setCount
+          ? _value.setCount
+          : setCount // ignore: cast_nullable_to_non_nullable
               as int,
       rep: null == rep
           ? _value.rep
@@ -135,9 +156,10 @@ class __$$WodImplCopyWithImpl<$Res> extends _$WodCopyWithImpl<$Res, _$WodImpl>
 @JsonSerializable()
 class _$WodImpl implements _Wod {
   _$WodImpl(
-      {required this.date,
+      {this.id,
+      required this.date,
       required this.work,
-      required this.set,
+      required this.setCount,
       required this.rep,
       required this.weight});
 
@@ -145,11 +167,13 @@ class _$WodImpl implements _Wod {
       _$$WodImplFromJson(json);
 
   @override
+  final int? id;
+  @override
   final int date;
   @override
   final String work;
   @override
-  final int set;
+  final int setCount;
   @override
   final int rep;
   @override
@@ -157,7 +181,7 @@ class _$WodImpl implements _Wod {
 
   @override
   String toString() {
-    return 'Wod(date: $date, work: $work, set: $set, rep: $rep, weight: $weight)';
+    return 'Wod(id: $id, date: $date, work: $work, setCount: $setCount, rep: $rep, weight: $weight)';
   }
 
   @override
@@ -165,18 +189,23 @@ class _$WodImpl implements _Wod {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WodImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.work, work) || other.work == work) &&
-            (identical(other.set, set) || other.set == set) &&
+            (identical(other.setCount, setCount) ||
+                other.setCount == setCount) &&
             (identical(other.rep, rep) || other.rep == rep) &&
             (identical(other.weight, weight) || other.weight == weight));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, date, work, set, rep, weight);
+  int get hashCode =>
+      Object.hash(runtimeType, id, date, work, setCount, rep, weight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Wod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WodImplCopyWith<_$WodImpl> get copyWith =>
@@ -192,26 +221,32 @@ class _$WodImpl implements _Wod {
 
 abstract class _Wod implements Wod {
   factory _Wod(
-      {required final int date,
+      {final int? id,
+      required final int date,
       required final String work,
-      required final int set,
+      required final int setCount,
       required final int rep,
       required final double weight}) = _$WodImpl;
 
   factory _Wod.fromJson(Map<String, dynamic> json) = _$WodImpl.fromJson;
 
   @override
+  int? get id;
+  @override
   int get date;
   @override
   String get work;
   @override
-  int get set;
+  int get setCount;
   @override
   int get rep;
   @override
   double get weight;
+
+  /// Create a copy of Wod
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WodImplCopyWith<_$WodImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

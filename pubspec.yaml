@@ -11,9 +11,11 @@ dependencies:
     sdk: flutter
   freezed_annotation:
   json_annotation:
-  # sqflite:
+  sqflite: ^2.4.0
   font_awesome_flutter:
   get:
+  flutter_form_builder: ^9.5.0
+  form_builder_validators: ^11.0.0
 
 dev_dependencies:
   flutter_test:
