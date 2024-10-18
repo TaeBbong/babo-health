@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../views/tabs/tab_counter.dart';
 import '../viewmodels/controller_main.dart';
+import 'tabs/tab_counter.dart';
+import 'tabs/tab_log.dart';
 
 class MainView extends StatelessWidget {
   final bottomNavController = Get.find<MainController>();
 
   static final List<Widget> _pages = <Widget>[
     CounterTab(),
-    const Center(child: Text('Settings', style: TextStyle(fontSize: 24))),
+    LogTab(),
   ];
 
   @override

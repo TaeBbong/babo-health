@@ -1,3 +1,5 @@
-# health_count
+# Health Count App
 
-A new Flutter project.
+- [ ] 일자별 조회
+- [ ] 운동 자동완성(선택)
+- [ ] 미리 운동이름 몇개 등록해놓기
