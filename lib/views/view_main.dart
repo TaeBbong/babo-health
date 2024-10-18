@@ -27,6 +27,7 @@ class MainView extends StatelessWidget {
           () => BottomNavigationBar(
             currentIndex: bottomNavController.selectedIndex.value,
             onTap: bottomNavController.changeTabIndex,
+            selectedFontSize: 12.0,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.dumbbell),

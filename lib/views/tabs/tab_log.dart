@@ -4,9 +4,12 @@ import 'package:intl/intl.dart';
 
 import '../../viewmodels/controller_log.dart';
 
+// ignore: must_be_immutable
 class LogTab extends StatelessWidget {
   final controller = Get.find<LogController>();
   List<DropdownMenuItem<int>> items = _buildDateDropdownItems();
+
+  LogTab({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,8 +44,7 @@ class LogTab extends StatelessWidget {
             child: Obx(() {
               // Show filtered Wods in a ListView
               if (controller.filteredWods.isEmpty) {
-                return const Center(
-                    child: const Text('No WODs for the selected date.'));
+                return const Center(child: Text('이 날의 운동기록이 없습니다.'));
               }
               return ListView.builder(
                 itemCount: controller.filteredWods.length,
@@ -51,10 +53,9 @@ class LogTab extends StatelessWidget {
                   return ListTile(
                     title: Text(wod.work),
                     subtitle: Text(
-                        'Set: ${wod.setCount}, Rep: ${wod.rep}, Weight: ${wod.weight} kg'),
+                        '세트: ${wod.setCount}, 횟수: ${wod.rep}, 중량: ${wod.weight}kg'),
                     trailing: Text(
-                      DateFormat('yyyy-MM-dd').format(
-                          DateTime.fromMillisecondsSinceEpoch(wod.date)),
+                      '${wod.weight}kg x ${wod.rep} x ${wod.setCount}',
                     ),
                   );
                 },
