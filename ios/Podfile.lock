@@ -1,8 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_keyboard_visibility (0.0.1):
-    - Flutter
-  - pointer_interceptor_ios (0.0.1):
+  - flutter_native_splash (0.0.1):
     - Flutter
   - sqflite_darwin (0.0.4):
     - Flutter
@@ -10,24 +8,20 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_keyboard_visibility (from `.symlinks/plugins/flutter_keyboard_visibility/ios`)
-  - pointer_interceptor_ios (from `.symlinks/plugins/pointer_interceptor_ios/ios`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_keyboard_visibility:
-    :path: ".symlinks/plugins/flutter_keyboard_visibility/ios"
-  pointer_interceptor_ios:
-    :path: ".symlinks/plugins/pointer_interceptor_ios/ios"
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   sqflite_darwin:
     :path: ".symlinks/plugins/sqflite_darwin/darwin"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
-  pointer_interceptor_ios: 508241697ff0947f853c061945a8b822463947c1
+  flutter_native_splash: edf599c81f74d093a4daf8e17bd7a018854bc778
   sqflite_darwin: a553b1fd6fe66f53bbb0fe5b4f5bab93f08d7a13
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
