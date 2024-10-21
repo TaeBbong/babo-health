@@ -1,15 +1,15 @@
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
 import '../../viewmodels/controller_counter.dart';
-
-// TODO: Responsive Widget 구성법
-// with MediaQuery/Flexible/Expanded/AspectRatio/FittedBox/SizedBox
+import '../../viewmodels/controller_main.dart';
 
 class CounterTab extends StatelessWidget {
   final controller = Get.find<CounterController>();
+  final mainController = Get.find<MainController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,16 +60,19 @@ class CounterTab extends StatelessWidget {
                       child: FormBuilder(
                         child: Column(
                           children: [
-                            FormBuilderTextField(
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(),
-                              ]),
-                              name: 'title',
+                            SimpleAutoCompleteTextField(
+                              key: GlobalKey(debugLabel: 'autocomplete'),
+                              suggestions: mainController.workouts,
                               decoration:
-                                  const InputDecoration(labelText: "운동 이름"),
-                              onChanged: (value) {
-                                controller.title.value = value!;
+                                  const InputDecoration(labelText: '운동 이름'),
+                              keyboardType: TextInputType.text,
+                              textChanged: (value) {
+                                controller.title.value = value;
                               },
+                              textSubmitted: (value) {
+                                controller.title.value = value;
+                              },
+                              clearOnSubmit: false,
                             ),
                             FormBuilderTextField(
                               validator: FormBuilderValidators.compose([
@@ -78,6 +81,9 @@ class CounterTab extends StatelessWidget {
                               name: 'weight',
                               decoration:
                                   const InputDecoration(labelText: "중량"),
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
                               onChanged: (value) {
                                 controller.weight.value = double.parse(value!);
                               },
@@ -89,6 +95,7 @@ class CounterTab extends StatelessWidget {
                               name: 'rep',
                               decoration:
                                   const InputDecoration(labelText: "횟수"),
+                              keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 controller.rep.value = int.parse(value!);
                               },

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:health_count/models/wod.dart';
 import 'package:health_count/utils/sqlite_helper.dart';
 
+import 'controller_log.dart';
+
 class CounterController extends GetxController {
   var count = 0.obs;
   var savedCount = 0.obs;
@@ -16,6 +18,7 @@ class CounterController extends GetxController {
 
   // Save data to sqlite
   Future<void> save() async {
+    final logController = Get.find<LogController>();
     final SqfliteHelper dbHelper = SqfliteHelper();
     savedCount.value = count.value;
     set.value = savedCount.value;
@@ -25,6 +28,7 @@ class CounterController extends GetxController {
         setCount: set.value,
         rep: rep.value,
         weight: weight.value));
+    await logController.fetchAllWods();
   }
 
   // Reset count
