@@ -29,12 +29,12 @@ class LogTab extends StatelessWidget {
                   return TextButton(
                     onPressed: () async {
                       final selectedDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.fromMillisecondsSinceEpoch(
-                            controller.selectedDate.value),
-                        firstDate: DateTime(2020),
-                        lastDate: DateTime.now(),
-                      );
+                          context: context,
+                          initialDate: DateTime.fromMillisecondsSinceEpoch(
+                              controller.selectedDate.value),
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime.now(),
+                          locale: const Locale('ko', 'KR'));
                       if (selectedDate != null) {
                         controller.onDateSelected(
                             selectedDate.millisecondsSinceEpoch);

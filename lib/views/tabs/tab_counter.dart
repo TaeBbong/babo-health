@@ -107,7 +107,6 @@ class CounterTab extends StatelessWidget {
                     confirm: TextButton(
                         onPressed: () async {
                           await controller.save();
-                          print('${controller.title}, ${controller.set}');
                           controller.reset();
                           Get.back(closeOverlays: true);
                           Get.showSnackbar(const GetSnackBar(
