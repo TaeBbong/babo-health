@@ -23,7 +23,12 @@ class CounterTab extends StatelessWidget {
                   width: 250.0,
                   height: 250.0,
                   decoration: const BoxDecoration(
-                    color: Colors.blue,
+                    gradient: LinearGradient(
+                      colors: [Color(0xffbf5ae0), Color(0xffa811da)],
+                      stops: [0.3, 0.8],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: Center(

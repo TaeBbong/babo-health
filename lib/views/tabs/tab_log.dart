@@ -7,7 +7,6 @@ import '../../viewmodels/controller_log.dart';
 // ignore: must_be_immutable
 class LogTab extends StatelessWidget {
   final controller = Get.find<LogController>();
-  List<DropdownMenuItem<int>> items = _buildDateDropdownItems();
 
   LogTab({super.key});
   @override
@@ -21,20 +20,32 @@ class LogTab extends StatelessWidget {
             child: Row(
               children: [
                 const Text(
-                  "Select Date:",
-                  style: TextStyle(fontSize: 18),
+                  "일자:",
+                  style: TextStyle(fontSize: 14),
                 ),
                 const SizedBox(width: 10),
                 // Date Dropdown
                 Obx(() {
-                  return DropdownButton<int>(
-                    value: controller.selectedDate.value,
-                    items: items,
-                    onChanged: (newValue) {
-                      if (newValue != null) {
-                        controller.onDateSelected(newValue);
+                  return TextButton(
+                    onPressed: () async {
+                      final selectedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.fromMillisecondsSinceEpoch(
+                            controller.selectedDate.value),
+                        firstDate: DateTime(2020),
+                        lastDate: DateTime.now(),
+                      );
+                      if (selectedDate != null) {
+                        controller.onDateSelected(
+                            selectedDate.millisecondsSinceEpoch);
                       }
                     },
+                    child: Text(
+                      DateFormat('yyyy-MM-dd').format(
+                          DateTime.fromMillisecondsSinceEpoch(
+                              controller.selectedDate.value)),
+                      style: const TextStyle(color: Colors.black),
+                    ),
                   );
                 }),
               ],
@@ -66,21 +77,4 @@ class LogTab extends StatelessWidget {
       ),
     );
   }
-}
-
-// Build a list of DropdownMenuItems for the date selector
-List<DropdownMenuItem<int>> _buildDateDropdownItems() {
-  final List<DateTime> dates = List.generate(7, (index) {
-    final today = DateTime.now();
-    return DateTime(today.year, today.month,
-        today.day - index); // Last 7 days (time is set to midnight)
-  });
-
-  return dates.map((date) {
-    final dateMillis = date.millisecondsSinceEpoch;
-    return DropdownMenuItem<int>(
-      value: dateMillis, // Ensure the value is truncated to midnight
-      child: Text(DateFormat('yyyy-MM-dd').format(date)),
-    );
-  }).toList();
 }
