@@ -8,6 +8,8 @@ windows/*
 web/
 web/*
 
+android/app/*
+
 # Miscellaneous
 *.class
 *.log
